@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Add this to your CSS file or inline style */
+@keyframes typewriter {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  .typewriter-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid black;
+    animation: typewriter 5s steps(30) 1s forwards, blink 0.75s step-end infinite;
+  }
+  
+  .typewriter-finished {
+    animation: typewriter 5s steps(30) 1s forwards, blink 0.75s step-end infinite;
+  }
+  
+  .typewriter-finished-paused {
+    animation: typewriter 5s steps(30) 1s forwards, blink 0s step-end;
+  }
+  

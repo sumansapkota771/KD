@@ -1,0 +1,188 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
+import image from '../images/image in the hero section.png'; // Update the path accordingly
+
+// Import technology stack logos
+import reactLogo from '../images/react-logo.png';
+import cssLogo from '../images/css-logo.png';
+import pythonLogo from '../images/python-logo.png';
+import gitLogo from '../images/git-logo.png';
+import nodeLogo from '../images/node-logo.svg';
+import jsLogo from '../images/js-logo.webp';
+import htmlLogo from '../images/html-logo.webp';
+import seoLogo from '../images/seo-logo.png';
+import wordpressLogo from '../images/wordpress-logo.png';
+import angularLogo from '../images/angular-logo.webp';
+
+const HeroSection = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const imageRef = useRef(null);
+  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (imageRef.current) {
+      const { width, height } = imageRef.current.getBoundingClientRect();
+      setImageDimensions({ width, height });
+    }
+  }, []);
+
+  const technologyLogos = [
+    reactLogo,
+    cssLogo,
+    pythonLogo,
+    gitLogo,
+    nodeLogo,
+    jsLogo,
+    htmlLogo,
+    seoLogo,
+    wordpressLogo,
+    angularLogo,
+  ];
+
+  const getRandomPosition = () => {
+    // Randomize starting positions inside the hero section's boundaries
+    const margin = 40;
+    const { width, height } = imageDimensions;
+
+    // Random x and y positions inside the bounds of the hero image
+    const x = Math.random() * (width - margin * 2) + margin;
+    const y = Math.random() * (height - margin * 2) + margin;
+    const rotate = Math.random() * 20 - 10; // Random rotation
+    const transformOrigin = `${Math.random() * 100}% ${Math.random() * 100}%`;
+
+    return { x, y, rotate, transformOrigin };
+  };
+
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-white">
+      <motion.div
+        className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen max-w-7xl mx-auto px-4 py-20"
+        animate={{
+          x: [0, 10, 0],
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        {/* Welcome Text - Left Side */}
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="left-content lg:w-1/2 lg:pr-8 mb-12 lg:mb-0 text-center lg:text-left"
+        >
+          <h1 className="text-6xl font-bold text-gray-800 mb-6">
+            Welcome to KodeDristi Softwares
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Your Idea to Our Code.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium flex items-center mx-auto lg:mx-0"
+          >
+            Get Started <ChevronRight className="ml-2" />
+          </motion.button>
+        </motion.div>
+
+        {/* Right Side Content - Image with Animation */}
+        <div
+          className="lg:w-1/2 relative perspective-container"
+          ref={imageRef}
+        >
+          <motion.div
+            className="w-full h-auto"
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+            animate={{
+              x: [0, 5, 0],
+              y: [0, 5, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            <img
+              src={image}
+              alt="Display"
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          </motion.div>
+
+          {/* Random Animated Logos */}
+          {technologyLogos.map((logo, index) => {
+            const randomStartPosition = getRandomPosition();
+            const randomEndPosition = getRandomPosition(); // Random end position for each logo
+            return (
+              <motion.div
+                key={index}
+                className="absolute"
+                style={{
+                  zIndex: -1,
+                  left: `${randomStartPosition.x}px`,
+                  top: `${randomStartPosition.y}px`,
+                  transformOrigin: randomStartPosition.transformOrigin,
+                  rotate: `${randomStartPosition.rotate}deg`,
+                }}
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: [0, 1],
+                  x: [randomStartPosition.x, randomEndPosition.x],
+                  y: [randomStartPosition.y, randomEndPosition.y],
+                  rotate: [randomStartPosition.rotate, randomEndPosition.rotate],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 6 + Math.random() * 3, // Randomized duration for variety
+                  ease: 'easeInOut',
+                  repeatDelay: 0, // Remove any delay between repetitions
+                }}
+              >
+                <img src={logo} alt="Technology Stack" className="w-10 h-10 object-contain" />
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      <style>{`
+        .bg-white {
+          background-color: white;
+        }
+
+        .left-content {
+          transform: translateZ(-50px);
+          transform-style: preserve-3d;
+        }
+
+        .perspective-container {
+          perspective: 3000px;
+          transform-style: preserve-3d;
+        }
+
+        .w-full {
+          width: 100%;
+        }
+
+        .h-auto {
+          height: auto;
+        }
+
+        .object-cover {
+          object-fit: cover;
+        }
+
+        .rounded-lg {
+          border-radius: 12px;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default HeroSection;
