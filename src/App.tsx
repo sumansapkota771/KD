@@ -1,32 +1,22 @@
 // import React from 'react';
-
+import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
-// import StatSection from './components/StatSection';
-// import { StickyScrollRevealDemo } from './components/StickyScrollRevealDemo';
 import TechPartnerSection from './components/TechPartnerSection'
-import AlternateTimeline from './components/ui/AlternateTimeline';
 import ProductDevelopmentTimeline from './components/ProductDevelopmentTimeline';
-
-// import TimelineDemo from './components/TimelineDemo';
-
-
-
-
-
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+   <Router><div className="min-h-screen bg-white">
       <Navbar />
-      <HeroSection />
+       <HeroSection />
        <TechPartnerSection/>
-       {/* <AlternateTimeline/> */}
        <ProductDevelopmentTimeline/>
-    
       <Footer />
-    </div>
+    </div>  
+    </Router> 
   );
 }
 

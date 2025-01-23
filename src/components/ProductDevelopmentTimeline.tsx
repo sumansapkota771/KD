@@ -17,7 +17,7 @@ const ProductDevelopmentTimeline = () => {
   };
 
   return (
-    <motion.section className="bg-white py-16 px-4">
+    <motion.section className="bg-green-50 py-16 px-4">
       <div className="text-center mb-12">
         <motion.h2
           ref={headingRef}

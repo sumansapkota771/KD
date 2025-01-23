@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 
+/* Add this CSS rule to style text selection */
+::selection {
+  background-color: green; /* The selection background color */
+  color: white;           /* The text color for the selection */
+}
+
+/* For better cross-browser support */
+::-moz-selection {
+  background-color: green;
+  color: white;
+}
+
+
 /* Add this to your CSS file or inline style */
 @keyframes typewriter {
     0% {

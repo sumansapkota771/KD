@@ -74,9 +74,13 @@ const HeroSection = () => {
           animate={{ opacity: 1, x: 0 }}
           className="left-content lg:w-1/2 lg:pr-8 mb-12 lg:mb-0 text-center lg:text-left"
         >
-          <h1 className="text-6xl font-bold text-gray-800 mb-6">
-            Welcome to KodeDristi Softwares
-          </h1>
+          <h1 className="text-6xl font-bold text-gray-800 mb-6 leading-snug">
+  Welcome To <span></span>
+  <span className="text-green-600">Kode</span>
+  <span className="text-blue-600">Dristi</span> Softwares
+</h1>
+
+
           <p className="text-xl text-gray-600 mb-8">
             Your Idea to Our Code.
           </p>

@@ -1,14 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
-import logo from '../images/Logo-02 (2).png'
+import logo from '../images/Logo-02 (2).png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+    <nav className="fixed top-0 w-full bg-white backdrop-blur-md z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
@@ -18,25 +19,27 @@ const Navbar = () => {
             >
               {/* <Code2 className="h-8 w-8 text-blue-600" /> */}
               <span className="font-bold text-xl text-gray-900">
-              <img src={logo} alt="Logo" className="h-20 mr-2" /></span>
+                <img src={logo} alt="Logo" className="h-20 mr-2" />
+              </span>
             </motion.div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {['Services', 'Portfolio', 'About', 'Contact'].map((item) => (
-              <motion.a
-                key={item}
-                href="#"
-                className="text-gray-700 hover:text-blue-600 font-medium"
-                whileHover={{ scale: 1.05 }}
-              >
-                {item}
-              </motion.a>
+              <motion.div key={item}>
+                <Link
+                  to={`/${item.toLowerCase()}`} // Dynamically route to respective pages
+                  className="text-gray-700 hover:text-green-600 font-medium"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {item}
+                </Link>
+              </motion.div>
             ))}
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium"
+              className="bg-blue-600 text-white hover:bg-lgreen-600 px-4 py-2 rounded-md font-medium"
             >
               Get Started
             </motion.button>
@@ -63,13 +66,13 @@ const Navbar = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
             {['Services', 'Portfolio', 'About', 'Contact'].map((item) => (
-              <a
+              <Link
                 key={item}
-                href="#"
+                to={`/${item.toLowerCase()}`} // Dynamically route to respective pages
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
               >
                 {item}
-              </a>
+              </Link>
             ))}
             <button className="w-full text-left block px-3 py-2 text-white bg-blue-600 rounded-md font-medium">
               Get Started
