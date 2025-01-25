@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import image from '../images/image in the hero section.png'; // Update the path accordingly
+import videoSource from '../images/Untitled design (1).mp4'; // Update the path to your video file
 
 // Import technology stack logos
 import reactLogo from '../images/react-logo.png';
@@ -18,12 +18,19 @@ import angularLogo from '../images/angular-logo.webp';
 const HeroSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const imageRef = useRef(null);
+  const videoRef = useRef(null); // Ref for video element
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     if (imageRef.current) {
       const { width, height } = imageRef.current.getBoundingClientRect();
       setImageDimensions({ width, height });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5; // Slow down the video playback speed
     }
   }, []);
 
@@ -41,14 +48,11 @@ const HeroSection = () => {
   ];
 
   const getRandomPosition = () => {
-    // Randomize starting positions inside the hero section's boundaries
     const margin = 40;
     const { width, height } = imageDimensions;
-
-    // Random x and y positions inside the bounds of the hero image
     const x = Math.random() * (width - margin * 2) + margin;
     const y = Math.random() * (height - margin * 2) + margin;
-    const rotate = Math.random() * 20 - 10; // Random rotation
+    const rotate = Math.random() * 20 - 10;
     const transformOrigin = `${Math.random() * 100}% ${Math.random() * 100}%`;
 
     return { x, y, rotate, transformOrigin };
@@ -75,15 +79,11 @@ const HeroSection = () => {
           className="left-content lg:w-1/2 lg:pr-8 mb-12 lg:mb-0 text-center lg:text-left"
         >
           <h1 className="text-6xl font-bold text-gray-800 mb-6 leading-snug">
-  Welcome To <span></span>
-  <span className="text-green-600">Kode</span>
-  <span className="text-blue-600">Dristi</span> Softwares
-</h1>
-
-
-          <p className="text-xl text-gray-600 mb-8">
-            Your Idea to Our Code.
-          </p>
+            Welcome To{' '}
+            <span className="text-green-600">Kode</span>
+            <span className="text-blue-600">Dristi</span> Softwares
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">Your Idea to Our Code.</p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium flex items-center mx-auto lg:mx-0"
@@ -92,13 +92,13 @@ const HeroSection = () => {
           </motion.button>
         </motion.div>
 
-        {/* Right Side Content - Image with Animation */}
+        {/* Right Side Content - Video with Animation */}
         <div
           className="lg:w-1/2 relative perspective-container"
           ref={imageRef}
         >
           <motion.div
-            className="w-full h-auto"
+            className="w-[120%] h-auto" // Increased video dimensions by 20%
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             animate={{
@@ -106,14 +106,17 @@ const HeroSection = () => {
               y: [0, 5, 0],
             }}
             transition={{
-              duration: 2,
+              duration: 6, // Slowed down the animation duration
               repeat: Infinity,
               ease: 'easeInOut',
             }}
           >
-            <img
-              src={image}
-              alt="Display"
+            <video
+              ref={videoRef}
+              src={videoSource}
+              autoPlay
+              muted
+              loop
               className="w-full h-auto object-cover rounded-lg"
             />
           </motion.div>
@@ -121,7 +124,7 @@ const HeroSection = () => {
           {/* Random Animated Logos */}
           {technologyLogos.map((logo, index) => {
             const randomStartPosition = getRandomPosition();
-            const randomEndPosition = getRandomPosition(); // Random end position for each logo
+            const randomEndPosition = getRandomPosition();
             return (
               <motion.div
                 key={index}
@@ -142,9 +145,9 @@ const HeroSection = () => {
                 }}
                 transition={{
                   repeat: Infinity,
-                  duration: 6 + Math.random() * 3, // Randomized duration for variety
+                  duration: 6 + Math.random() * 3,
                   ease: 'easeInOut',
-                  repeatDelay: 0, // Remove any delay between repetitions
+                  repeatDelay: 0,
                 }}
               >
                 <img src={logo} alt="Technology Stack" className="w-10 h-10 object-contain" />
@@ -153,38 +156,6 @@ const HeroSection = () => {
           })}
         </div>
       </motion.div>
-
-      <style>{`
-        .bg-white {
-          background-color: white;
-        }
-
-        .left-content {
-          transform: translateZ(-50px);
-          transform-style: preserve-3d;
-        }
-
-        .perspective-container {
-          perspective: 3000px;
-          transform-style: preserve-3d;
-        }
-
-        .w-full {
-          width: 100%;
-        }
-
-        .h-auto {
-          height: auto;
-        }
-
-        .object-cover {
-          object-fit: cover;
-        }
-
-        .rounded-lg {
-          border-radius: 12px;
-        }
-      `}</style>
     </div>
   );
 };
