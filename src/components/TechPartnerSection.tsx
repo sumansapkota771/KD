@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import partner from "../images/partner.jpg"; // Replace with your image path
+import partner from "../images/partner.png"; // Replace with your image path
 
 const TechPartnerSection = () => {
   const [hovered, setHovered] = useState(false);
@@ -18,38 +18,13 @@ const TechPartnerSection = () => {
 
   return (
     <motion.section
-      className="text-center bg-gradient-to-b from-blue-100 via-blue-50 to-white p-10 font-sans relative overflow-hidden"
+      className="text-center bg-gradient-to-b  font-sans relative"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
     >
-      {/* Floating animated sparkles */}
-      {Array.from({ length: 30 }).map((_, index) => (
-        <motion.div
-          key={index}
-          className="absolute bg-gradient-to-r from-pink-400 to-yellow-500 rounded-full opacity-50"
-          style={{
-            width: `${Math.random() * 20 + 10}px`,
-            height: `${Math.random() * 20 + 10}px`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: ["0%", "50%", "0%"],
-            x: ["0%", "25%", "-25%"],
-            opacity: [0.5, 0.8, 0.5],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 5 + Math.random() * 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        ></motion.div>
-      ))}
-
       <motion.h1
-        className="text-4xl font-extrabold mb-10 text-gray-800"
+        className="text-4xl pt-10 font-extrabold mb-10 text-gray-800"
         variants={textVariants}
         initial="hidden"
         animate="visible"
@@ -77,11 +52,12 @@ const TechPartnerSection = () => {
         to hire us as your brand partner!
       </motion.p>
 
-      {/* Animated Image */}
+      {/* Centered Image */}
       <motion.div
         className="relative inline-block mb-12"
         whileHover={{ scale: 1.1, rotate: 2 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{ width: "50%", margin: "0 auto" }}
       >
         <img
           src={partner}
