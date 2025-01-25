@@ -59,9 +59,9 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white">
+    <div className="relative min-h-screen overflow-hidden bg-white flex items-center justify-center px-6 sm:px-12">
       <motion.div
-        className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen max-w-7xl mx-auto px-4 py-20"
+        className="flex flex-col lg:flex-row items-center justify-center w-full max-w-7xl min-h-screen"
         animate={{
           x: [0, 10, 0],
           y: [0, 10, 0],
@@ -76,14 +76,14 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
-          className="left-content lg:w-1/2 lg:pr-8 mb-12 lg:mb-0 text-center lg:text-left"
+          className="text-center lg:text-left lg:w-1/2 mb-12 lg:mb-0"
         >
-          <h1 className="text-6xl font-bold text-gray-800 mb-6 leading-snug">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-snug">
             Welcome To{' '}
             <span className="text-green-600">Kode</span>
             <span className="text-blue-600">Dristi</span> Softwares
           </h1>
-          <p className="text-xl text-gray-600 mb-8">Your Idea to Our Code.</p>
+          <p className="text-lg sm:text-xl text-gray-600 mb-8">Your Idea to Our Code.</p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium flex items-center mx-auto lg:mx-0"
@@ -93,12 +93,9 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Right Side Content - Video with Animation */}
-        <div
-          className="lg:w-1/2 relative perspective-container"
-          ref={imageRef}
-        >
+        <div className="lg:w-1/2 relative perspective-container" ref={imageRef}>
           <motion.div
-            className="w-[120%] h-auto" // Increased video dimensions by 20%
+            className="w-full sm:w-[80%] lg:w-[120%] h-auto mx-auto"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             animate={{
