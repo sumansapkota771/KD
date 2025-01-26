@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import videoSource from '../images/Untitled design (1).mp4'; // Update the path to your video file
+import videoSource from '../images/herosectiongif.gif'; // Update the path to your GIF file
 
 // Import technology stack logos
 import reactLogo from '../images/react-logo.png';
@@ -18,19 +18,12 @@ import angularLogo from '../images/angular-logo.webp';
 const HeroSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const imageRef = useRef(null);
-  const videoRef = useRef(null); // Ref for video element
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     if (imageRef.current) {
       const { width, height } = imageRef.current.getBoundingClientRect();
       setImageDimensions({ width, height });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5; // Slow down the video playback speed
     }
   }, []);
 
@@ -59,7 +52,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white flex items-center justify-center px-6 sm:px-12">
+    <div className="relative min-h-screen overflow-hidden bg-white-500 flex items-center justify-center px-6 sm:px-12">
       <motion.div
         className="flex flex-col lg:flex-row items-center justify-center w-full max-w-7xl min-h-screen"
         animate={{
@@ -92,7 +85,7 @@ const HeroSection = () => {
           </motion.button>
         </motion.div>
 
-        {/* Right Side Content - Video with Animation */}
+        {/* Right Side Content - GIF Animation */}
         <div className="lg:w-1/2 relative perspective-container" ref={imageRef}>
           <motion.div
             className="w-full sm:w-[80%] lg:w-[120%] h-auto mx-auto"
@@ -108,12 +101,9 @@ const HeroSection = () => {
               ease: 'easeInOut',
             }}
           >
-            <video
-              ref={videoRef}
+            <img
               src={videoSource}
-              autoPlay
-              muted
-              loop
+              alt="Hero GIF"
               className="w-full h-auto object-cover rounded-lg"
             />
           </motion.div>

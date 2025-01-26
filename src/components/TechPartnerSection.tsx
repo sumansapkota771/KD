@@ -18,7 +18,7 @@ const TechPartnerSection = () => {
 
   return (
     <motion.section
-      className="text-center bg-gradient-to-b  font-sans relative"
+      className="text-center bg-gradient-to-b  mb-10 font-sans relative"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -82,7 +82,7 @@ const TechPartnerSection = () => {
         transition={{ duration: 1, delay: 0.6 }}
       >
         {[
-          "5 Years of Excellence",
+          "2 Years of Excellence",
           "Nepali IT Engineers & Team",
           "Ethical Work Practices",
           "On-Time Delivery",
