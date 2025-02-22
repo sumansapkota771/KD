@@ -8,15 +8,12 @@ const Contact = () => {
         We'd love to hear from you! Fill out the form below or reach out to us directly.
       </p>
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-8 width-1/2">
         {/* Contact Form */}
-        <div className="bg-white shadow-md rounded-lg p-6 mx-auto w-full md:w-1/2">
-          <form>
+        <div className="bg-white shadow-md rounded-lg p-6 w-full md:w-1/2">
+        <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
               </label>
               <input
@@ -29,10 +26,7 @@ const Contact = () => {
             </div>
 
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -45,10 +39,7 @@ const Contact = () => {
             </div>
 
             <div className="mb-4">
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                 Message
               </label>
               <textarea
@@ -70,50 +61,27 @@ const Contact = () => {
         </div>
 
         {/* Contact Information */}
-        <div className="bg-gray-50 shadow-md rounded-lg p-6">
+        <div className="bg-gray-50 shadow-xl rounded-lg p-6 w-full md:w-1/2">
           <h2 className="text-2xl font-semibold text-gray-800">Get in Touch</h2>
           <p className="mt-4 text-gray-600">
             You can also reach us through the following channels:
           </p>
           <ul className="mt-4 space-y-2">
             <li>
-              <span className="font-medium text-gray-800">Email:</span>{' '}
-              contact@yourcompany.com
+              <span className="font-medium text-gray-800">Email:</span> dristikode@gmail.com
             </li>
             <li>
-              <span className="font-medium text-gray-800">Phone:</span>{' '}
-              +1 (555) 123-4567
+              <span className="font-medium text-gray-800">Phone:</span> +9779-9863459299
             </li>
             <li>
-              <span className="font-medium text-gray-800">Address:</span>{' '}
-              123 Main Street, Suite 100, Cityville, ST 12345
+              <span className="font-medium text-gray-800">Address:</span> Tokha, Kathmandu Nepal.
             </li>
           </ul>
-          <p className="mt-6 text-gray-600">
-            Follow us on social media:
-          </p>
+          <p className="mt-6 text-gray-600">Follow us on social media:</p>
           <div className="flex space-x-4 mt-4">
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-800"
-              aria-label="Visit our Facebook"
-            >
-              Facebook
-            </a>
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-800"
-              aria-label="Visit our Twitter"
-            >
-              Twitter
-            </a>
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-800"
-              aria-label="Visit our LinkedIn"
-            >
-              LinkedIn
-            </a>
+            <a href="facebook.com" className="text-blue-600 hover:text-blue-800" aria-label="Visit our Facebook">Facebook</a>
+            <a href="twitter.com" className="text-blue-600 hover:text-blue-800" aria-label="Visit our Twitter">Twitter</a>
+            <a href="linkedin.com" className="text-blue-600 hover:text-blue-800" aria-label="Visit our LinkedIn">LinkedIn</a>
           </div>
         </div>
       </div>
@@ -121,4 +89,32 @@ const Contact = () => {
   );
 };
 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  try {
+    const response = await fetch("http://localhost:5000/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      alert("Message sent successfully!");
+    } else {
+      alert("Failed to send message.");
+    }
+  } catch (error) {
+    console.error("Error sending message:", error);
+  }
+};
+
+ 
 export default Contact;

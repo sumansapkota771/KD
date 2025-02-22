@@ -7,7 +7,7 @@ import TechPartnerSection from "./components/TechPartnerSection";
 import ProductDevelopmentTimeline from "./components/ProductDevelopmentTimeline";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio"; // Import Portfolio
-import About from "./pages/About"; // Import About
+// import About from "./pages/About"; // Import About
 import Contact from "./pages/Contact"; // Import Contact
 
 function App() {
@@ -35,15 +35,15 @@ function App() {
             {/* Independent Pages */}
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route
-              path="/about"
+            {/* <Route
+              path="/ab~out"
               element={
                 <>
                   <About />
                   <ProductDevelopmentTimeline />
                 </>
               }
-            />
+            /> */}
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import logo from '../images/Logo-02 (2).png';
@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-white backdrop-blur-md z-50 border-b border-gray-200">
+    <nav className="fixed top-0 w-full bg-white bg-opacity-10 backdrop-blur-sm z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -32,21 +32,21 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {['Services', 'Portfolio', 'About', 'Contact'].map((item) => (
-              <motion.div key={item}>
+              <motion.div
+                key={item}
+                whileHover={{ scale: 1.05 }} // Adding scale effect on hover for items
+                className="relative group"
+              >
                 <Link
                   to={`/${item.toLowerCase()}`}
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
                   {item}
                 </Link>
+                {/* Smooth underline animation on hover */}
+                <span className="absolute left-0 bottom-0 w-full h-px bg-green-600 scale-x-0 transition-all duration-300 group-hover:scale-x-100"></span>
               </motion.div>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-blue-600 text-white hover:bg-green-600 px-4 py-2 rounded-md font-medium"
-            >
-              Get Started
-            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,13 +80,6 @@ const Navbar = () => {
                 {item}
               </Link>
             ))}
-            <Link
-              to="/get-started"
-              className="block px-3 py-2 text-white bg-blue-600 rounded-md font-medium text-center"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Get Started
-            </Link>
           </div>
         </motion.div>
       )}
