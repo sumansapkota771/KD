@@ -1,24 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
-import videoSource from '../images/herosectiongif.gif'; // Update the path to your GIF file
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+import videoSource from "../images/herosectiongif.gif"; // Update the path to your GIF file
 
 // Import technology stack logos
-import reactLogo from '../images/react-logo.png';
-import cssLogo from '../images/css-logo.png';
-import pythonLogo from '../images/python-logo.png';
-import gitLogo from '../images/git-logo.png';
-import nodeLogo from '../images/node-logo.svg';
-import jsLogo from '../images/js-logo.webp';
-import htmlLogo from '../images/html-logo.webp';
-import seoLogo from '../images/seo-logo.png';
-import wordpressLogo from '../images/wordpress-logo.png';
-import angularLogo from '../images/angular-logo.webp';
+import reactLogo from "../images/react-logo.png";
+import cssLogo from "../images/css-logo.png";
+import pythonLogo from "../images/python-logo.png";
+import gitLogo from "../images/git-logo.png";
+import nodeLogo from "../images/node-logo.svg";
+import jsLogo from "../images/js-logo.webp";
+import htmlLogo from "../images/html-logo.webp";
+import seoLogo from "../images/seo-logo.png";
+import wordpressLogo from "../images/wordpress-logo.png";
+import angularLogo from "../images/angular-logo.webp";
 
-const HeroSection = () => {
+const HeroSection = ({scrollToTimeline}) => {
   const [isHovered, setIsHovered] = useState(false);
   const imageRef = useRef(null);
-  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
     if (imageRef.current) {
@@ -62,7 +65,7 @@ const HeroSection = () => {
         transition={{
           duration: 5,
           repeat: Infinity,
-          ease: 'easeInOut',
+          ease: "easeInOut",
         }}
       >
         {/* Welcome Text - Left Side */}
@@ -72,14 +75,16 @@ const HeroSection = () => {
           className="text-center lg:text-left lg:w-1/2 mb-12 lg:mb-0"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-snug">
-            Welcome To{' '}
-            <span className="text-green-600">Kode</span>
-            <span className="text-blue-600">Dristi</span> Softwares
+            Welcome To <span className="text-green-600">Kode</span>
+            <span className="text-blue-600">Dristi</span> Software
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 mb-8">Your Idea to Our Code.</p>
+          <p className="text-lg sm:text-xl text-gray-600 mb-8">
+            From Idea To code.
+          </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium flex items-center mx-auto lg:mx-0"
+            onClick={scrollToTimeline}
           >
             Get Started <ChevronRight className="ml-2" />
           </motion.button>
@@ -98,7 +103,7 @@ const HeroSection = () => {
             transition={{
               duration: 6, // Slowed down the animation duration
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           >
             <img
@@ -128,16 +133,23 @@ const HeroSection = () => {
                   opacity: [0, 1],
                   x: [randomStartPosition.x, randomEndPosition.x],
                   y: [randomStartPosition.y, randomEndPosition.y],
-                  rotate: [randomStartPosition.rotate, randomEndPosition.rotate],
+                  rotate: [
+                    randomStartPosition.rotate,
+                    randomEndPosition.rotate,
+                  ],
                 }}
                 transition={{
                   repeat: Infinity,
                   duration: 6 + Math.random() * 3,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                   repeatDelay: 0,
                 }}
               >
-                <img src={logo} alt="Technology Stack" className="w-10 h-10 object-contain" />
+                <img
+                  src={logo}
+                  alt="Technology Stack"
+                  className="w-10 h-10 object-contain"
+                />
               </motion.div>
             );
           })}

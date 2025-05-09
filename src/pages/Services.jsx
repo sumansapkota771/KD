@@ -1,56 +1,63 @@
 import React from "react";
 import { motion } from "framer-motion";
-import webdev from '../images/web_dev.png'
-import ecommerce from '../images/e-commerce.png'
-import appdev from '../images/appdev.png'
-import brand from '../images/branding.png'
-import seo from '../images/seo.png'
-import annualmaintain from '../images/annualmaintain.png'
-
-
+import webdev from "../images/web_dev.png";
+import ecommerce from "../images/e-commerce.png";
+import appdev from "../images/appdev.png";
+import brand from "../images/branding.png";
+import seo from "../images/seo.png";
+import annualmaintain from "../images/annualmaintain.png";
 
 const portfolioItems = [
   {
     id: 1,
     title: "Web Design Project",
-    description: "A modern and responsive web design for Westlingo Education.",
-    image:webdev,
+    description: "A modern and responsive web design for a startup.",
+    image: webdev,
   },
   {
     id: 2,
     title: "E-commerce App",
     description: "An e-commerce platform with seamless UX/UI.",
-    image:ecommerce,
+    image: ecommerce,
   },
   {
     id: 3,
     title: "Mobile App Design",
-    description: "A sleek mobile app design for farm to door Project.",
+    description: "A sleek mobile app design for fitness enthusiasts.",
     image: appdev,
   },
- {
-     id: 4,
-     title: "Web Hosting",
-     description: "20+ websites are hosted from our platform .",
-     image: annualmaintain,
-   },
   {
-      id: 4,
-      title: "Digital Marketing",
-      description: "Comprehensive digital marketing strategy for Various brands.",
-      image: brand,
-    },
+    id: 4,
+    title: "Digital Marketing",
+    description: "Comprehensive digital marketing strategy for a brand.",
+    image: brand,
+  },
   {
-      id: 5,
-      title: "SEO Optimization",
-      description: "SEO strategies to boost online visibility.",
-      image: seo,
-    },
+    id: 5,
+    title: "SEO Optimization",
+    description: "SEO strategies to boost online visibility.",
+    image: seo,
+  },
+  {
+    id: 6,
+    title: "Web Hosting",
+    description: "Reliable web hosting solutions for businesses.",
+    image: annualmaintain,
+  },
 ];
 
-const Portfolio = () => {
+const Services = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    const to = "dristicode@gmail.com";
+    const subject = encodeURIComponent("Inquiry from Kodedristi Website");
+    const body = encodeURIComponent("Hello Kodedristi Team,");
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+    window.open(gmailUrl, "_blank");
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-40 px-4 sm:px-8">
+    <div className="pt-40 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 py-16 px-4 sm:px-8">
       {/* Page Header */}
       <motion.div
         className="text-center mb-12"
@@ -58,9 +65,7 @@ const Portfolio = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl font-bold text-gray-800">
-          Our Ongoing Projects 
-        </h1>
+        <h1 className="text-4xl font-bold text-gray-800">Our Services</h1>
         <p className="mt-4 text-gray-600">
           Take a look at some of our recent projects and designs.
         </p>
@@ -115,15 +120,16 @@ const Portfolio = () => {
         <p className="text-gray-600 mt-2">
           Let’s bring your ideas to life with our expertise.
         </p>
-        <a
-          href="/contact"
+
+        <button
+          onClick={handleClick}
           className="mt-4 inline-block bg-blue-600 text-white py-2 px-6 rounded-lg font-medium shadow-md hover:bg-blue-700 transition"
         >
           Get in Touch
-        </a>
+        </button>
       </motion.div>
     </div>
   );
 };
 
-export default Portfolio;
+export default Services;

@@ -7,15 +7,22 @@ import TechPartnerSection from "./components/TechPartnerSection";
 import ProductDevelopmentTimeline from "./components/ProductDevelopmentTimeline";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio"; // Import Portfolio
-// import About from "./pages/About"; // Import About
+import About from "./pages/About"; // Import About
 import Contact from "./pages/Contact"; // Import Contact
+import SideIcons from "./components/sideIcons";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+
 
 function App() {
+  const timelineRef = useRef(null);
+
   return (
     <Router>
       <div className="min-h-screen bg-white flex flex-col">
         {/* Navbar (always visible) */}
         <Navbar />
+        <SideIcons />
 
         {/* Main Content */}
         <div className="flex-grow">
@@ -25,26 +32,29 @@ function App() {
               path="/"
               element={
                 <>
-                  <HeroSection />
+                  <HeroSection  scrollToTimeline={() => timelineRef.current?.scrollIntoView({ behavior: "smooth" })} />
+                  
                   <TechPartnerSection />
-                  <ProductDevelopmentTimeline />
+                  <div ref={timelineRef}>
+                    <ProductDevelopmentTimeline />
+                  </div>
                 </>
               }
             />
 
             {/* Independent Pages */}
             <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            {/* <Route
-              path="/ab~out"
+            {/* <Route path="/portfolio" element={<Portfolio />} /> */}
+            <Route
+              path="/about"
               element={
                 <>
                   <About />
                   <ProductDevelopmentTimeline />
                 </>
               }
-            /> */}
-            <Route path="/contact" element={<Contact />} />
+            />
+            {/* <Route path="/contact" element={<Contact />} /> */}
           </Routes>
         </div>
 

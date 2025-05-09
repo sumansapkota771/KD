@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(), // Enables React support with Vite
+    react(), 
+    tailwindcss(),// Enables React support with Vite
   ],
 
   resolve: {
