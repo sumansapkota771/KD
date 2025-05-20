@@ -50,19 +50,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          {/* <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              className="text-gray-700"
-            >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div> */}
+          {/* git  */}
         </div>
       </div>
 
