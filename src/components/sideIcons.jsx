@@ -9,7 +9,7 @@ export default function SideIcons() {
   return (
     <div className={containerStyle}>
       <a
-        href="https://wa.me/9851362001"
+        href="https://wa.me/9779851362001"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

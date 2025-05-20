@@ -50,7 +50,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
@@ -62,19 +62,19 @@ const Navbar = () => {
                 <Menu className="h-6 w-6" />
               )}
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Mobile Navigation */}
-{isMenuOpen && (
+{/* {isMenuOpen && (
   <motion.div
     initial={{ opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
     className="md:hidden bg-white bg-opacity-10 backdrop-blur-sm z-50 border-b border-gray-200"
   >
     <div className="px-2 pt-2 pb-3 space-y-1">
-      {['Services', 'Portfolio', 'About', 'Contact'].map((item) => (
+      {['Services'].map((item) => (
         <div key={item} className="relative group">
           <Link
             to={`/${item.toLowerCase()}`}
@@ -83,13 +83,13 @@ const Navbar = () => {
           >
             {item}
           </Link>
-          {/* Underline effect only under text */}
+        
           <span className="absolute left-0 bottom-0 w-0 h-px bg-green-600 transition-all duration-300 group-hover:w-24"></span>
         </div>
       ))}
     </div>
   </motion.div>
-)}
+)} */}
 
     </nav>
   );

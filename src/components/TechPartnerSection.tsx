@@ -40,14 +40,16 @@ const TechPartnerSection = () => {
         animate="visible"
         transition={{ duration: 1, delay: 0.4 }}
       >
-        A long-term and dependable partner with expertise in the technology field? Choose One Tech Nepal. We offer
-        excellent customer service and high-quality solutions at an affordable price range. If you value reliability
-        and quality, we're the right fit for you. Whatsapp us today at
+        A long-term and dependable partner with expertise in the technology
+        field? Choose KodeDristi Software. We offer excellent customer service
+        and high-quality solutions at an affordable price range. If you value
+        reliability and quality, we're the right fit for you. Whatsapp us today
+        at
         <a
-          href="https://wa.me/9779841843316"
+          href="https://wa.me/9779851362001"
           className="text-blue-500 hover:underline ml-1"
         >
-          9779841843316
+          9779851362001
         </a>
         to hire us as your brand partner!
       </motion.p>
